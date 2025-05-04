@@ -2,7 +2,7 @@
 Algorithm 1: find the kth smallest element in the list using the O (n log n) Mergesort sorting method.
 """
 import random
-
+import time
 
 def merge(leftSide, rightSide):
     resArr = []
@@ -22,6 +22,9 @@ def merge(leftSide, rightSide):
 
 # Sort using Merge Sort Algorithm
 def mergeSort(unsortedList):
+    end = time.time()
+    t = end - start
+    print(f"{t:.04f} secs.")
     if (len(unsortedList) <= 1):
         return unsortedList
     
@@ -52,17 +55,20 @@ if __name__ == "__main__":
 
     print("Random List Generated")
 
-    arrSize = 5
+    start = time.time()
+    arrSize = 8192
     rLst = randomList(arrSize)
+    # Testing list vs random testing
+    rLst = [10, 5, 3, 8, 20]
     print(rLst)
     
     sorted = mergeSort(rLst)
-    k = random.randint(0, len(rLst))
+    k = random.randint(1, len(rLst))
 
     print("Sorted: ", sorted)
 
     print("Searching random valid value")
-    print("K - Element at K: ", k, getElement(k, sorted))
+    print("K - Element at K: ", k, " - ", getElement(k, sorted))
     # Take user input here to test
     
 
